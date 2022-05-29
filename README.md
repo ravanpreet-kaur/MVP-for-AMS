@@ -54,9 +54,9 @@ This section is kind-of a playground for users or admins. It helps you to choose
 
 This function is used to fetch data from the file "Automobile_data.csv", and group it according to x and y columns passed as parameters, as well as operation mentioned.  
 
-For series: data is grouped together according to y column
-For count: data is grouped together and count operation is performed
-For mean and sum: data is aggregated according to the respective operations  
+1) For series: data is grouped together according to y column
+2) For count: data is grouped together and count operation is performed
+3) For mean and sum: data is aggregated according to the respective operations  
 
 Then, the resultant dataframe is manipulated according to the data structure or values needed by ChartJS to plot.
 
