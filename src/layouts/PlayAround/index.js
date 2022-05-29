@@ -12,7 +12,8 @@ import Select from 'react-select';
 import '../../style.css'
 
 function PlayAround() {
-  const [columns, setColumns] = useState()
+  const [Xcolumns, setXColumns] = useState()
+  const [Ycolumns, setYColumns] = useState()
   const [ChartType, setChartType] = useState()
   const [XAxis, setXAxis] = useState()
   const [YAxis, setYAxis] = useState()
@@ -29,16 +30,25 @@ function PlayAround() {
     let df = await dfd.readCSV(file)
     let cols = df.columns
 
-    let SelectAxisColumns = [];
+    let SelectXAxisColumns = [];
+    let SelectYAxisColumns = [];
 
     for (var i = 0; i < cols.length; i++) {
-      SelectAxisColumns.push({
+      SelectXAxisColumns.push({
         label: cols[i],
         value: cols[i]
       })
+
+      if(df[cols[i]].dtype == 'int32'){
+        SelectYAxisColumns.push({
+          label: cols[i],
+          value: cols[i]
+        })
+      }
     }
 
-    setColumns(SelectAxisColumns)
+    setXColumns(SelectXAxisColumns)
+    setYColumns(SelectYAxisColumns)
   }
   useEffect(() => {
     GetColumns();
@@ -91,11 +101,11 @@ function PlayAround() {
               onChange={handleChartTypeOnChange}
             />
             <Select className="selectOption"
-              options={columns}
+              options={Xcolumns}
               onChange={handleXAxisOnChange}
             />
             <Select className="selectOption"
-              options={columns}
+              options={Ycolumns}
               onChange={handleYAxisOnChange}
             />
             <Select className="selectOption"
@@ -106,7 +116,7 @@ function PlayAround() {
           <MDBox mb={3}>
             <Card sx={{ height: "100%" }}>
               <MDBox padding="1rem" height="30rem" className="PlayAroundCanvas">
-                <VisualizePlots ChartType={(ChartType) ? ChartType : Bar} columnX={XAxis ? XAxis : ''} columnY={YAxis ? [YAxis] : []} Calculate={CalculateOperation ? [CalculateOperation] : []} />
+                <VisualizePlots ChartType={(ChartType) ? ChartType : Bar} columnX={XAxis ? XAxis : 'make'} columnY={YAxis ? [YAxis] : ['Loan_Annuity']} Calculate={CalculateOperation ? [CalculateOperation] : ['sum']} />
               </MDBox>
             </Card>
           </MDBox>
