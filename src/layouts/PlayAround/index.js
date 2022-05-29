@@ -116,7 +116,7 @@ function PlayAround() {
           <MDBox mb={3}>
             <Card sx={{ height: "100%" }}>
               <MDBox padding="1rem" height="30rem" className="PlayAroundCanvas">
-                <VisualizePlots ChartType={(ChartType) ? ChartType : Bar} columnX={XAxis ? XAxis : 'make'} columnY={YAxis ? [YAxis] : ['Loan_Annuity']} Calculate={CalculateOperation ? [CalculateOperation] : ['sum']} />
+                <VisualizePlots ChartType={(ChartType) ? ChartType : Bar} columnX={XAxis ? XAxis : 'make'} columnY={YAxis ? [YAxis] : ['Loan_Annuity']} Calculate={CalculateOperation ? CalculateOperation : ['sum']} />
               </MDBox>
             </Card>
           </MDBox>
