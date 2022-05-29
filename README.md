@@ -1,5 +1,5 @@
 # MVP for AMS
-### Minimal Viable Product for Automobile Mangement System
+## Minimal Viable Product for Automobile Mangement System
 
 ### Project Overview 
 
@@ -14,8 +14,13 @@ It's a web application based on react framework, and I used material ui template
 7) random colour generator for charts based on an object of colours chosen.
 
 ### Project Walkthrough
+<img width="1120" alt="Screenshot 2022-05-29 193129" src="https://user-images.githubusercontent.com/73405757/170873094-b4eb7290-cf46-435b-baba-1aa2877f50f8.png">
+
+[Project Walkthrough Video Link](https://www.youtube.com/watch?v=ZAqnOrP8fN0)
 
 ### Project Deployed Link
+
+Click on this [link](http://mvp-for-ams.s3-website-us-east-1.amazonaws.com/) to view the project.
 
 ### Sections/ Tracks
 The tracks are as follows:
