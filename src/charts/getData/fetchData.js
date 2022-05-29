@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PlotChart from 'charts/visualizeData/chart';
 import * as dfd from "danfojs";
-import * as d3 from "d3";
-import { Line, Bar, Doughnut, Pie } from 'react-chartjs-2';
 import { pallete } from '../ColorPallete/colorPallete';
 import { Unit } from '../Labels/Units'
 
@@ -84,7 +82,7 @@ function VisualizePlots(props) {
 
     return (
         <div>
-            <PlotChart ChartType={props.ChartType} indexAxis={props.indexAxis} aspectRatio={props.aspectRatio} xDisplay={props.xDisplay} yDisplay={props.yDisplay} xAxis={xAxis} dataset={finalData} title={props.title} radius={props.radius} />
+            <PlotChart ChartType={props.ChartType} indexAxis={props.indexAxis} aspectRatio={props.aspectRatio} xAxis={xAxis} dataset={finalData} title={props.title} radius={props.radius} />
         </div>
     )
 }

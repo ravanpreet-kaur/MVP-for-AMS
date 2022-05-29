@@ -28,16 +28,6 @@ const PlotChart = (props) => {
                 display: true,
                 text: props.title,
             },
-            scales: {
-                x: {
-                    display: props.xDisplay,
-                    stacked: props.xStacked,
-                },
-                y: {
-                    display: props.yDisplay,
-                    stacked: props.yStacked
-                }
-            }
         }
     }
 
