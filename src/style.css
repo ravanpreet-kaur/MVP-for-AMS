@@ -1,0 +1,20 @@
+.ChartCanvas {
+    width: 100%
+}
+
+.ChartCanvas canvas {
+    height: 18rem !important;
+}
+
+.selectOption {
+    padding: 2rem;
+    width: 20rem;
+}
+
+.select {
+    display: flex;
+}
+
+.PlayAroundCanvas canvas {
+    height: 28rem !important;
+}
