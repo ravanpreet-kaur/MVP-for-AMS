@@ -16,7 +16,7 @@
     "prettier/prettier": [
       "error",
       {
-        "endOfLine": "crlf"
+        "endOfLine": "off"
       }
     ],
     "default-param-last": "off",
