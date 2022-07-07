@@ -20,7 +20,7 @@ It's a web application based on react framework, and I used material ui template
 
 ### Project Deployed Link
 
-Click on this [link](http://mvp-for-ams.s3-website-us-east-1.amazonaws.com/) to view the project.
+Click on this [link](https://62c6f9c7cd5c3c00b34a8246--effortless-cat-b75d4d.netlify.app) to view the project.
 
 ### Sections/ Tracks
 The tracks are as follows:
