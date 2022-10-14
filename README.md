@@ -1,5 +1,5 @@
 # MVP for AMS
-## Minimal Viable Product for Automobile Mangement System
+## Minimal Viable Product for Automobile Management System
 
 ### Project Overview 
 
