@@ -10,10 +10,14 @@ function VisualizePlots(props) {
     const [yParameters, setyParameters] = useState()
     const [LengthLabels, setLength] = useState()
     const [finalData, setData] = useState()
-//s
+    const [file, setFile] = useState("./Automobile_data.csv")
+
     const fetchData = async () => {
-        const file = "./Automobile_data.csv";
+        if(props.file){
+            setFile(props.file)
+        }
         let df = await dfd.readCSV(file)
+        console.log(df)
         let columnX = props.columnX
         let columnY = props.columnY
         let CalculateOperation = props.Calculate
@@ -78,7 +82,7 @@ function VisualizePlots(props) {
     }
     useEffect(() => {
         fetchData();
-    }, [props])
+    }, [props, file])
 
     return (
         <div>

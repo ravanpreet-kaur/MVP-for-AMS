@@ -3,6 +3,7 @@ import MDTypography from "components/MDTypography";
 import Grid from "@mui/material/Grid";
 import MDBox from "components/MDBox";
 import Card from "@mui/material/Card";
+import MDButton from "components/MDButton";
 import { Line, Bar } from 'react-chartjs-2';
 import VisualizePlots from "charts/getData/fetchData";
 
@@ -18,15 +19,27 @@ function PlayAround() {
   const [XAxis, setXAxis] = useState()
   const [YAxis, setYAxis] = useState()
   const [CalculateOperation, setCalculateOpeartion] = useState()
+  const [file, setFile] = useState("./Automobile_data.csv")
 
   const heading = () => (
-    <MDTypography variant="body1" color="dark">
+    <MDTypography color="dark" fontWeight="bold">
       Play-around with charts!!
     </MDTypography>
   );
 
+  const loadingMessageUploadFile = () => (
+    <MDTypography color="dark" fontWeight="bold">
+      Please upload your file!
+    </MDTypography>
+  );
+
+  const loadingMessageSelectCol = () => (
+    <MDTypography color="dark" fontWeight="bold">
+      Please select columns!
+    </MDTypography>
+  );
+
   const GetColumns = async () => {
-    const file = "./Automobile_data.csv";
     let df = await dfd.readCSV(file)
     let cols = df.columns
 
@@ -39,7 +52,7 @@ function PlayAround() {
         value: cols[i]
       })
 
-      if(df[cols[i]].dtype == 'int32'){
+      if (df[cols[i]].dtype === 'int32') {
         SelectYAxisColumns.push({
           label: cols[i],
           value: cols[i]
@@ -69,46 +82,59 @@ function PlayAround() {
   const handleChartTypeOnChange = (event) => {
     const value = event.value
     setChartType(value)
-    console.log(value)
   }
 
   const handleXAxisOnChange = (event) => {
     const value = event.value
     setXAxis(value)
-    console.log(value)
   }
 
   const handleYAxisOnChange = (event) => {
     const value = event.value
     setYAxis(value)
-    console.log(value)
   }
 
   const handleCalculateOnChange = (event) => {
     const value = event.value
     setCalculateOpeartion(value)
-    console.log(value)
+  }
+
+  function handleFileUploadChange(event) {
+    setFile(event.target.files[0])
+    setXColumns(undefined)
+    setYColumns(undefined)
+    setXAxis(undefined)
+    setYAxis(undefined)
   }
 
   return (
     <DashboardLayout>
-      <MDBox mt={10} mb={3}>
+      <MDBox mt={5} mb={2}>
         <Grid justifyContent='center'>
           {heading()}
+          <form>
+            <p>Choose your file: </p>
+            <input type="file" onChange={handleFileUploadChange} />
+            <MDButton onClick={GetColumns} size="small" color="dark">Upload</MDButton>
+          </form>
           <div className="select">
             <Select className="selectOption"
+              placeholder='Chart-Type'
               options={SelectChartType}
               onChange={handleChartTypeOnChange}
             />
             <Select className="selectOption"
+              placeholder='X-Axis'
               options={Xcolumns}
               onChange={handleXAxisOnChange}
             />
             <Select className="selectOption"
+              placeholder='Y-Axis'
               options={Ycolumns}
               onChange={handleYAxisOnChange}
             />
             <Select className="selectOption"
+              placeholder='Operation'
               options={SelectCalculateOperation}
               onChange={handleCalculateOnChange}
             />
@@ -116,7 +142,13 @@ function PlayAround() {
           <MDBox mb={3}>
             <Card sx={{ height: "100%" }}>
               <MDBox padding="1rem" height="30rem" className="PlayAroundCanvas">
-                <VisualizePlots ChartType={(ChartType) ? ChartType : Bar} columnX={XAxis ? XAxis : 'make'} columnY={YAxis ? [YAxis] : ['Loan_Annuity']} Calculate={CalculateOperation ? CalculateOperation : ['sum']} />
+                {Xcolumns === undefined && Ycolumns === undefined ?
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '55vh' }}>{loadingMessageUploadFile()}</div> :
+                  (XAxis !== undefined && YAxis !== undefined ?
+                    <VisualizePlots file={file} ChartType={(ChartType) ? ChartType : Bar} columnX={XAxis} columnY={[YAxis]} Calculate={CalculateOperation ? CalculateOperation : ['sum']} />:
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '55vh' }}>{loadingMessageSelectCol()}</div>
+                  )
+                }
               </MDBox>
             </Card>
           </MDBox>
