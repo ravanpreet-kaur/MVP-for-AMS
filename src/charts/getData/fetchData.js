@@ -10,7 +10,7 @@ function VisualizePlots(props) {
     const [yParameters, setyParameters] = useState()
     const [LengthLabels, setLength] = useState()
     const [finalData, setData] = useState()
-
+//s
     const fetchData = async () => {
         const file = "./Automobile_data.csv";
         let df = await dfd.readCSV(file)
